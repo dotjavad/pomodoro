@@ -1,0 +1,173 @@
+body {
+	background-color: #ecf0f1;
+}
+
+.timer-settings {
+	width: 400px;
+	margin: 50px auto 0;
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+
+	span {
+		font-size: 14px;
+		color: #333;
+	}
+}
+
+.timer-wrap {
+	position: relative;
+	width: 400px;
+	margin: 50px auto 0;
+	z-index: 2;
+}
+
+.btn {
+
+	&:link,
+	&:visited {
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 15px 40px;
+		display: inline-block;
+		border-radius: 100px;
+		transition: all .2s;
+		position: absolute;
+	}
+
+	&:hover {
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	}
+
+	&:active {
+		transform: translateY(-1px);
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	&::after {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		border-radius: 100px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		transition: all .4s;
+	}
+
+	&:hover::after {
+		transform: scaleX(1.6) scaleY(1.6);
+		opacity: 0;
+	}
+
+	&.btn-animated {
+		animation: FadeOut 5s ease-out;
+		animation-fill-mode: backwards;
+	}
+}
+
+@keyframes FadeOut {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+.start-timer,
+.reset-timer {
+	position: absolute;
+	background-color: #fff;
+	top: 30px;
+	right: 30px;
+	border: none;
+	width: 70px;
+	height: 70px;
+	color: #fff;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 3;
+	font-size: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.start-timer {
+	background-color: #d35400;
+
+	&:after {
+		background-color: #d35400;
+	}
+}
+
+.reset-timer {
+	background-color: #3498db;
+	top: 100px;
+	right: -20px;
+
+	&:after {
+		background-color: #3498db;
+	}
+}
+
+.total {
+	position: absolute;
+	bottom: 30%;
+	left: 50%;
+	transform: translate(-50%, 50%);
+	font-size: 20px;
+	background-color: #fff;
+	color: #34495e;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.timer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #fff;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+}
+
+.timer-circle {
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+	background-color: #34495e;
+	border-radius: 50%;
+
+	.timer-filler {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		transition: 1000ms;
+		text-align: center;
+		color: #004666;
+
+		&.work {
+			background-color: #9b59b6;
+		}
+
+		&.rest {
+			background-color: #1abc9c;
+		}
+	}
+}
